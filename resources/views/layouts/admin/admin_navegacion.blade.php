@@ -102,12 +102,18 @@
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">Perfil</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
+              <form id="cerrar_sesion_form" action="{{ route('logout') }}" method="POST">
+                <!-- Token de seguirdad -->
+                @csrf
+                <!-- end Token -->
+                <a href="javascript:{}" onclick="document.getElementById('cerrar_sesion_form').submit()" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i> Cerrar sesión
+                    <span class="float-right text-muted text-sm">3 mins</span>
+                  </a>
+                <button type="submit">Cerrar</button>
+            </form>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-users mr-2"></i> 8 friend requests

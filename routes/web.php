@@ -22,9 +22,10 @@ Route::post('/guardar-producto',[\App\Http\Controllers\ProductoController::class
 Route::get('/ver-producto',[\App\Http\Controllers\ProductoController::class,'ver'])->name('ver_producto');
 Route::get('/eliminar-producto',[\App\Http\Controllers\ProductoController::class,'delete'])->name('eliminar_producto');
 Route::resource('/categorias', \App\Http\Controllers\CategoriaController::class)->middleware('auth');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+/*************RUTAS DE LA ADMINISTRACION**********************/
+Route::get('/dashboard',[\App\Http\Controllers\AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+/*******AQUI CARGAMOS TODOS LOS PRIVILEGIOS*******/
+Route::get('dashboard/{any}',[\App\Http\Controllers\AdminController::class, 'page'])->where('any','.*')->middleware(['auth'])->name('priv_admin');
+Route::post('/dashboard/save-admin',[\App\Http\Controllers\AdminController::class, 'post'])->middleware(['auth'])->name('post_admin');
+/*************************************/
 require __DIR__.'/auth.php';

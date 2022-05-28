@@ -11,8 +11,10 @@ class ProductoController extends Controller
         $this->model = new ProductoModel();
     }
     public function index(){
+
         $productos  = ProductoModel::all();
         $categorias = CategoriaModel::all();
+        
         return view('producto')->with(compact('productos','categorias'));
     }
     public function ver(Request $request){
